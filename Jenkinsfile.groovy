@@ -70,8 +70,8 @@ pipeline{
             }
         }
         stage("VPC repo"){
-            ws("terraform"){
-                sh "terraform plan --var-file=dev.tfvars"
+            ws("terraform/"){
+                sh "terraform init"
             }
         }
     }
