@@ -64,20 +64,6 @@ pipeline{
                 echo "Hello"
             }
         }
-        stage("clone VPC repo"){
-            steps{
-                ws("terraform/"){
-                    git "https://github.com/apenjiyev/terraform_infrastructure.git"
-                }
-            }
-        }
-        stage("VPC repo"){
-            steps{
-                ws("terraform/"){
-                    sh "terraform init"
-                }
-            }
-        }
     }
     post{
         success {
