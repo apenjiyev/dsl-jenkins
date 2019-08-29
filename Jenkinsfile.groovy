@@ -64,6 +64,16 @@ pipeline{
                 echo "Hello"
             }
         }
+        stage("clone VPC repo"){
+            ws("terraform/"){
+                git "https://github.com/apenjiyev/terraform_infrastructure.git"
+            }
+        }
+        stage("VPC repo"){
+            ws("terraform"){
+                sh "terraform plan --var-file=dev.tfvars"
+            }
+        }
     }
     post{
         success {
