@@ -65,13 +65,17 @@ pipeline{
             }
         }
         stage("clone VPC repo"){
-            ws("terraform/"){
-                git "https://github.com/apenjiyev/terraform_infrastructure.git"
+            steps{
+                ws("terraform/"){
+                    git "https://github.com/apenjiyev/terraform_infrastructure.git"
+                }
             }
         }
         stage("VPC repo"){
-            ws("terraform/"){
-                sh "terraform init"
+            steps{
+                ws("terraform/"){
+                    sh "terraform init"
+                }
             }
         }
     }
